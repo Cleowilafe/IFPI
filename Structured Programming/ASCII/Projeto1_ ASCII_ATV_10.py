@@ -1,0 +1,10 @@
+print("parabéms !!!!")
+print("")
+print("Aqui vai um dinossauro!")
+print("")
+print("                ---    ")
+print("               /    )  ")
+print("     .-^^^^^^-/   /    ")
+print(" ___/            /     ")
+print("<___. | |-| |__ /      ")
+print("      |_| |_|
