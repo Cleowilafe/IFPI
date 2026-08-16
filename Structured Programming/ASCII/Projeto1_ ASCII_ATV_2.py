@@ -1,1 +1,1 @@
-print ("estou com fome")
+print ("estou com fome!")
