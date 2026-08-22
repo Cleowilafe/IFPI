@@ -5,13 +5,10 @@
 #===================================
 
 
-hrs = input().strip()
-
+hrs = input("Digite a quantidade de horas: ").strip()
 
 p_hr = 12 # Número de peças por hora
 
-
 p = int(hrs) * p_hr
 
-
-print(p)
+print(f" Foram produzidas {p} peças")
