@@ -5,11 +5,11 @@
 #===================================
 
 # Lendo os volumes das duas substâncias
-volume1 = float(input())
-volume2 = float(input())
+volume1 = float(input("Digite a quantidade em litros da primeira substância: ").strip())
+volume2 = float(input("Digite a quantidade em litros da segunda substância: ").strip())
 
 # Calculando o total da poção
 total = volume1 + volume2
 
 # Exibindo o resultado formatado
-print( f"{total}")
+print( f"O volume total é: {total} (L)")
