@@ -5,7 +5,7 @@
 #===================================
 
 # Lendo o número inteiro X
-X = int(input())
+X = int(input("Digite um número inteiro").strip())
 
 # Calculando os valores
 dobro = X * 2
@@ -13,6 +13,6 @@ triplo = X * 3
 quadrado = X ** 2
 
 # Exibindo os resultados (um em cada linha)
-print(dobro)
-print(triplo)
-print(quadrado)
+print("O dobro desse múmero é: {dobro}")
+print("O triplo desse múmero é: {triplo}")
+print("O quadrado desse múmero é: {quadrado}")
