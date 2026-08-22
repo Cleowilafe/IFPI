@@ -1,9 +1,13 @@
 
+#===================================
+# Autor [clenilson willames alves feitosa]
+# status [stable]
+# Version [1.0]
+#===================================
 
 
-x = input().strip()
-
+x = input("Digite um número inteiro: ").strip()
 
 resultado = int(x) * 2
 
-print(resultado)
+print(f"O dobro desse número é: {resultado}")
