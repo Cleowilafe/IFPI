@@ -1,8 +1,12 @@
+#===================================
+# Autor [clenilson willames alves feitosa]
+# status [stable]
+# Version [1.0]
+#===================================
 
 
-
-hrs = input().strip()
+hrs = input("Digite a quantidade de horas: ").strip()
 
 atraso = int(hrs) * 3
 
-print(atraso)
+print(f"O relógio está {atraso} minutos atrasado")
