@@ -1,3 +1,9 @@
+#===================================
+# Autor [clenilson willames alves feitosa]
+# status [stable]
+# Version [1.0]
+#===================================
+
 sabor_bolo = input().strip().lower()
 print(f'Para fazer um bolo de {sabor_bolo.upper()} siga os passos: ')
 print('1. Pegue os ingredientes: ovos, óleo, açucar, trigo e fermento.')
