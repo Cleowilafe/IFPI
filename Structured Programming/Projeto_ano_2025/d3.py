@@ -1,0 +1,8 @@
+print("Quantos anos voçê tem?")
+idade = input()
+idade = int(idade)
+anosdecachorro = (idade*7)
+print("Se voçê fosse um cachorro, voçê teria " , anosdecachorro , "anos !")
+print(" ")
+print("               *O*____* ")
+print("                  ||||  ")
