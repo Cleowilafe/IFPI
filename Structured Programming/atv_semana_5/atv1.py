@@ -10,14 +10,19 @@ def calcular_desconto(preco, porcentagem):
     return preco - percentual(preco, porcentagem)
 
 
-# INPUT
-preco = float(input())
-valor_percentual = float(input())
+def main():
+    # INPUT
+    preco = float(input("Digite o preço: "))
+    valor_percentual = float(input("Digite o percentual: "))
 
-# PROCESSAMENTO
-preco_acres = calcular_acrescimo(preco, valor_percentual)
-preco_desc = calcular_desconto(preco, valor_percentual)
+    # PROCESSAMENTO
+    preco_acres = calcular_acrescimo(preco, valor_percentual)
+    preco_desc = calcular_desconto(preco, valor_percentual)
 
-# OUTPUT
-print("%.2f" % preco_acres)
-print("%.2f" % preco_desc)
+    # OUTPUT
+    print(f"Preço com acréscimo: {preco_acres:.2f}")
+    print(f"Preço com desconto: {preco_desc:.2f}")
+
+
+if __name__ == "__main__":
+    main()
