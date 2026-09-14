@@ -10,16 +10,26 @@ def inverter(numero):
 
     milhar = numero % 10
 
-    numero_invertido = (unidade * 1000) + (dezena * 100) + (centena * 10) + milhar
+    numero_invertido = (
+        unidade * 1000 +
+        dezena * 100 +
+        centena * 10 +
+        milhar
+    )
 
     return numero_invertido
 
 
-# INPUT
-numero = int(input("Digite um número de 4 dígitos: "))
+def main():
+    # INPUT
+    numero = int(input("Digite um número de 4 dígitos: "))
 
-# PROCESSAMENTO
-numero_invertido = inverter(numero)
+    # PROCESSAMENTO
+    numero_invertido = inverter(numero)
 
-# OUTPUT
-print(f"Número invertido: {numero_invertido}")
+    # OUTPUT
+    print(f"Número invertido: {numero_invertido}")
+
+
+if __name__ == "__main__":
+    main()
