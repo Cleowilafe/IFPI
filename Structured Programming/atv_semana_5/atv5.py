@@ -2,17 +2,18 @@ def calcular(a, b, c):
     return 2 * a + 5 * b - c
 
 
-def resultado():
+def main():
     # INPUT
     a = int(input("Digite o valor de A: "))
     b = int(input("Digite o valor de B: "))
     c = int(input("Digite o valor de C: "))
 
     # PROCESSAMENTO
-    valor = calcular(a, b, c)
+    resultado = calcular(a, b, c)
 
     # OUTPUT
-    print(f"Resultado da função: {valor}")
+    print(f"Resultado da função: {resultado}")
 
 
-resultado()
+if __name__ == "__main__":
+    main()
