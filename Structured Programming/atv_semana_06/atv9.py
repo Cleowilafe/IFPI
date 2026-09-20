@@ -1,7 +1,7 @@
 import math
 
 #Entrada de dados
-idade = float(input())
+idade = float(input("Digite sua idade em anos terrestres: "))
 
 #Processamento de dados
 
@@ -12,8 +12,9 @@ def idadeespacial(idade):
 
 def main():
     anos = idadeespacial(idade)
-    print(anos)
+    
+    #Saída de dados
+    print(f"Sua idade em anos espaciais é: {anos}")
 
-#Saída de dados
 if __name__ == "__main__":
     main()
