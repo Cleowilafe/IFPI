@@ -1,5 +1,5 @@
 #Entrada de dados
-temperatura = float(input())
+temperatura = float(input("Digite a temperatura em Celsius: "))
 
 #Processamento de dados
 
@@ -9,8 +9,9 @@ def fahrenheit(temperatura):
 
 def main():
     resultado = fahrenheit(temperatura)
-    print(f"{resultado:.2f}")
+    
+    #Saída de dados
+    print(f"A temperatura em Fahrenheit é: {resultado:.2f}")
 
-#Saída de dados
 if __name__ == "__main__":
     main()
