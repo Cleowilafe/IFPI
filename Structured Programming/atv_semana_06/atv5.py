@@ -1,12 +1,12 @@
 #Entrada de dados
-preco = int(input())
+preco = float(input())
 
 #Processamento de dados
 
 def val(preco):
     desconto = preco * 0.91
-    normal = preco/5
-    aumento = (preco * 1.17)/10
+    normal = preco / 5
+    aumento = (preco * 1.17) / 10
     return desconto, normal, aumento
 
 def main():
