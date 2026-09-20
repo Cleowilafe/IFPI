@@ -1,5 +1,5 @@
 #Entrada de dados
-idade = float(input())
+idade = float(input("Digite um valor: "))
 
 #Processamento de dados
 
@@ -9,8 +9,9 @@ def idad(idade):
 
 def main():
     anos = idad(idade)
-    print(anos)
+    
+    #Saída de dados
+    print(f"O valor arredondado é: {anos}")
 
-#Saída de dados
 if __name__ == "__main__":
     main()
