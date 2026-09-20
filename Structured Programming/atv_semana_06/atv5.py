@@ -1,5 +1,5 @@
 #Entrada de dados
-preco = float(input())
+preco = float(input("Digite o preço: "))
 
 #Processamento de dados
 
@@ -11,10 +11,11 @@ def val(preco):
 
 def main():
     desconto, normal, aumento = val(preco)
-    print(f'{desconto:.2f}')
-    print(f'{normal:.2f}')
-    print(f'{aumento:.2f}')
+    
+    #Saída de dados
+    print(f"Preço com desconto: {desconto:.2f}")
+    print(f"Preço normal parcelado: {normal:.2f}")
+    print(f"Preço com aumento parcelado: {aumento:.2f}")
 
-#Saída de dados
 if __name__ == "__main__":
     main()
