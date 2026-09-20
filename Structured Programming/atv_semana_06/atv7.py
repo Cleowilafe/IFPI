@@ -1,5 +1,3 @@
-import math
-
 #Entrada de dados
 idade = float(input())
 
