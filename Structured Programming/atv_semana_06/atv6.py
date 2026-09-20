@@ -1,5 +1,5 @@
 #Entrada de dados
-valor = input()
+valor = input("Digite uma frase: ")
 
 #Processamento de dados
 
@@ -10,7 +10,7 @@ def num(valor):
 
 def main():
     valornovo = num(valor)
-    print(valornovo)
+    print(f"A frase possui {valornovo} caracteres.")
 
 #Saída de dados
 if __name__ == "__main__":
