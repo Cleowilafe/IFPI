@@ -26,10 +26,15 @@ def descobrir_signo(dia, mes):
 
 
 def main():
-    dia = int(input())
-    mes = int(input())
+    # Entrada de dados
+    dia = int(input('Digite o dia de nascimento: '))
+    mes = int(input('Digite o mês de nascimento: '))
 
-    print(descobrir_signo(dia, mes))
+    # Processamento de dados
+    signo = descobrir_signo(dia, mes)
+
+    # Saída de dados
+    print(f'Seu signo é: {signo}')
 
 
 if __name__ == "__main__":
