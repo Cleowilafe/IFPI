@@ -12,16 +12,16 @@ def ordenar_crescente(a, b, c):
 
 
 def main():
-    a = int(input())
-    b = int(input())
-    c = int(input())
+    # Entrada de dados
+    a = int(input('Digite o primeiro número: '))
+    b = int(input('Digite o segundo número: '))
+    c = int(input('Digite o terceiro número: '))
 
+    # Processamento de dados
     a, b, c = ordenar_crescente(a, b, c)
 
-    print(a)
-    print(b)
-    print(c)
+    # Saída de dados
+    print(f'Números em ordem crescente: {a}, {b}, {c}')
 
 
 if __name__ == "__main__":
-    main()
