@@ -20,9 +20,14 @@ def contar_pares(numero):
 
 
 def main():
-    numero = int(input())
+    # Entrada de dados
+    numero = int(input('Digite um número inteiro: '))
 
-    print(contar_pares(numero))
+    # Processamento de dados
+    quantidade = contar_pares(numero)
+
+    # Saída de dados
+    print(f'A quantidade de dígitos pares é: {quantidade}')
 
 
 if __name__ == "__main__":
