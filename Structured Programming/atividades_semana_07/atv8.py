@@ -19,9 +19,14 @@ def analisar_numero(numero):
 
 
 def main():
-    numero = int(input())
+    # Entrada de dados
+    numero = int(input('Digite um número inteiro: '))
 
-    print(analisar_numero(numero))
+    # Processamento de dados
+    resultado = analisar_numero(numero)
+
+    # Saída de dados
+    print(f'Resultado: {resultado}')
 
 
 if __name__ == "__main__":
