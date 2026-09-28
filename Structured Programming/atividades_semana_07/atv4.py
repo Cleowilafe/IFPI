@@ -7,14 +7,20 @@ def analise(caract):
         tipo = 'número'
     else:
         tipo = 'símbolo'
+
     return tipo
+
+
 def main():
-#Entrada de dados
-    caract = input()
-#Processamento de dados
+    # Entrada de dados
+    caract = input('Digite um caractere: ')
+
+    # Processamento de dados
     tipo = analise(caract)
-#Saida de dados
-    print(tipo)
-    
+
+    # Saída de dados
+    print(f'O caractere informado é: {tipo}')
+
+
 if __name__ == "__main__":
     main()
