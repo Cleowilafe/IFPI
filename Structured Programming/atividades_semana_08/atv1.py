@@ -1,0 +1,33 @@
+def calcular_idade(dia_atual, mes_atual, ano_atual,
+                   dia_nascimento, mes_nascimento, ano_nascimento):
+
+    idade = ano_atual - ano_nascimento
+
+    if mes_atual < mes_nascimento:
+        idade -= 1
+
+    if mes_atual == mes_nascimento and dia_atual < dia_nascimento:
+        idade -= 1
+
+    return idade
+
+
+def main():
+    dia_atual = int(input())
+    mes_atual = int(input())
+    ano_atual = int(input())
+
+    dia_nascimento = int(input())
+    mes_nascimento = int(input())
+    ano_nascimento = int(input())
+
+    idade = calcular_idade(
+        dia_atual, mes_atual, ano_atual,
+        dia_nascimento, mes_nascimento, ano_nascimento
+    )
+
+    print(idade)
+
+
+if __name__ == "__main__":
+    main()
