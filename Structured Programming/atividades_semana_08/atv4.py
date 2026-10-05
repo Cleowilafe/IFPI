@@ -20,15 +20,16 @@ def mostrar_maiores(a, b, c, d, e, media):
 
 
 def main():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
+    a = int(input("Digite o primeiro número: "))
+    b = int(input("Digite o segundo número: "))
+    c = int(input("Digite o terceiro número: "))
+    d = int(input("Digite o quarto número: "))
+    e = int(input("Digite o quinto número: "))
 
     media = calcular_media(a, b, c, d, e)
 
-    print(f"{media:.2f}")
+    print(f"A média é: {media:.2f}")
+    print("Números maiores que a média:")
 
     mostrar_maiores(a, b, c, d, e, media)
 
