@@ -22,14 +22,14 @@ def classificar_imc(imc):
 
 
 def main():
-    massa = float(input())
-    altura = float(input())
+    massa = float(input("Digite a massa (kg): "))
+    altura = float(input("Digite a altura (m): "))
 
     imc = calcular_imc(massa, altura)
     classificacao = classificar_imc(imc)
 
-    print(f"{imc:.2f}")
-    print(classificacao)
+    print(f"IMC: {imc:.2f}")
+    print(f"Classificação: {classificacao}")
 
 
 if __name__ == "__main__":
