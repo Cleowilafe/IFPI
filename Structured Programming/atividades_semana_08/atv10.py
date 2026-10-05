@@ -26,12 +26,12 @@ def verificar_situacao(conceito):
 
 
 def main():
-    matricula = input()
+    matricula = input("Digite a matrícula: ")
 
-    nota1 = float(input())
-    nota2 = float(input())
-    nota3 = float(input())
-    media_exercicios = float(input())
+    nota1 = float(input("Digite a primeira nota: "))
+    nota2 = float(input("Digite a segunda nota: "))
+    nota3 = float(input("Digite a terceira nota: "))
+    media_exercicios = float(input("Digite a média dos exercícios: "))
 
     media_final = calcular_media_final(
         nota1, nota2, nota3, media_exercicios
@@ -40,10 +40,10 @@ def main():
     conceito = calcular_conceito(media_final)
     situacao = verificar_situacao(conceito)
 
-    print(matricula)
-    print(f"{media_final:.2f}")
-    print(conceito)
-    print(situacao)
+    print("Matrícula:", matricula)
+    print(f"Média final: {media_final:.2f}")
+    print("Conceito:", conceito)
+    print("Situação:", situacao)
 
 
 if __name__ == "__main__":
