@@ -19,20 +19,20 @@ def data_mais_recente(dia1, mes1, ano1, dia2, mes2, ano2):
 
 
 def main():
-    dia1 = int(input())
-    mes1 = int(input())
-    ano1 = int(input())
+    dia1 = int(input("Digite o dia da primeira data: "))
+    mes1 = int(input("Digite o mês da primeira data: "))
+    ano1 = int(input("Digite o ano da primeira data: "))
 
-    dia2 = int(input())
-    mes2 = int(input())
-    ano2 = int(input())
+    dia2 = int(input("Digite o dia da segunda data: "))
+    mes2 = int(input("Digite o mês da segunda data: "))
+    ano2 = int(input("Digite o ano da segunda data: "))
 
     dia, mes, ano = data_mais_recente(
         dia1, mes1, ano1,
         dia2, mes2, ano2
     )
 
-    print(f"{dia}/{mes}/{ano}")
+    print(f"A data mais recente é: {dia}/{mes}/{ano}")
 
 
 if __name__ == "__main__":
