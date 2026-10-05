@@ -12,11 +12,11 @@ def verificar_numero(numero):
 
 
 def main():
-    numero = int(input())
+    numero = int(input("Digite um número inteiro: "))
 
     resultado = verificar_numero(numero)
 
-    print(resultado)
+    print("Resultado:", resultado)
 
 
 if __name__ == "__main__":
