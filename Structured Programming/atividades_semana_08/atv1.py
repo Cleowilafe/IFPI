@@ -13,20 +13,20 @@ def calcular_idade(dia_atual, mes_atual, ano_atual,
 
 
 def main():
-    dia_atual = int(input())
-    mes_atual = int(input())
-    ano_atual = int(input())
+    dia_atual = int(input("Digite o dia atual: "))
+    mes_atual = int(input("Digite o mês atual: "))
+    ano_atual = int(input("Digite o ano atual: "))
 
-    dia_nascimento = int(input())
-    mes_nascimento = int(input())
-    ano_nascimento = int(input())
+    dia_nascimento = int(input("Digite o dia de nascimento: "))
+    mes_nascimento = int(input("Digite o mês de nascimento: "))
+    ano_nascimento = int(input("Digite o ano de nascimento: "))
 
     idade = calcular_idade(
         dia_atual, mes_atual, ano_atual,
         dia_nascimento, mes_nascimento, ano_nascimento
     )
 
-    print(idade)
+    print("A idade é:", idade)
 
 
 if __name__ == "__main__":
