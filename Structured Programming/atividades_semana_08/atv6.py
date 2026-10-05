@@ -6,11 +6,11 @@ def calcular_resultado(numero):
 
 
 def main():
-    numero = int(input())
+    numero = int(input("Digite um número inteiro: "))
 
     resultado = calcular_resultado(numero)
 
-    print(resultado)
+    print("Resultado:", resultado)
 
 
 if __name__ == "__main__":
