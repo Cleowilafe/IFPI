@@ -26,16 +26,16 @@ def maior_menor(a, b, c, d, e):
 
 
 def main():
-    a = int(input())
-    b = int(input())
-    c = int(input())
-    d = int(input())
-    e = int(input())
+    a = int(input("Digite o primeiro número: "))
+    b = int(input("Digite o segundo número: "))
+    c = int(input("Digite o terceiro número: "))
+    d = int(input("Digite o quarto número: "))
+    e = int(input("Digite o quinto número: "))
 
     maior, menor = maior_menor(a, b, c, d, e)
 
-    print(maior)
-    print(menor)
+    print("Maior número:", maior)
+    print("Menor número:", menor)
 
 
 if __name__ == "__main__":
