@@ -1,41 +1,49 @@
 
+# ==================================================
+# FUNÇÃO PRINCIPAL
+# ==================================================
+
 def main():
-    # Lê a data de nascimento digitada pelo usuário
-    nascimento = int(input("Digite sua data de nascimento: "))
+    # Entrada de dados
+    nascimento = int(input("Digite sua data de nascimento no formato DDMMAAAA: "))
 
-    # Separa a data em dia, mês e ano
-    dia, mes, ano = separar_data(nascimento)
-
-    # Descobre o signo com base no dia e no mês
+    # Separa a data e identifica o signo
+    dia, mes, _ = separar_data(nascimento)
     meu_signo = signo(dia, mes)
 
-    # Busca o horóscopo correspondente ao signo
-    texto = horoscopo(meu_signo)
+    # Busca o horóscopo do signo encontrado
+    horoscopo_de_hoje = horoscopo(meu_signo)
 
-    # Mostra o resultado na tela
-    print(texto)
+    # Mostra o resultado
+    print(horoscopo_de_hoje)
 
+
+# ==================================================
+# SEPARA A DATA DE NASCIMENTO
+# ==================================================
 
 def separar_data(dma):
-    # Pega os quatro últimos números, que representam o ano
-    ano = dma % 10000
-
-    # Retira o ano, deixando apenas o dia e o mês
+    # Pega os quatro últimos dígitos, que representam o ano
+    a = dma % 10000
     dma //= 10000
 
-    # Pega os dois últimos números, que representam o mês
-    mes = dma % 100
-
-    # O que sobrou é o dia
+    # Pega os dois últimos dígitos restantes, que representam o mês
+    m = dma % 100
     dma //= 100
-    dia = dma
 
-    # Retorna as três partes da data
-    return dia, mes, ano
+    # O que sobrou representa o dia
+    d = dma
 
+    # Retorna o dia, o mês e o ano
+    return d, m, a
+
+
+# ==================================================
+# IDENTIFICA O SIGNO
+# ==================================================
 
 def signo(dia, mes):
-    # Verifica o signo de acordo com o mês e o dia
+
     if mes == 3:
         return 'Peixes' if dia < 21 else 'Áries'
 
@@ -73,14 +81,22 @@ def signo(dia, mes):
         return 'Aquário' if dia < 19 else 'Peixes'
 
 
+# ==================================================
+# REMOVE OS ACENTOS DO TEXTO
+# ==================================================
+
 def remover_acentos(texto):
     from unicodedata import normalize
 
-    # Remove os acentos para facilitar a montagem da URL
+    # Converte caracteres acentuados para caracteres sem acento
     return normalize('NFKD', texto).encode(
         'ASCII', 'ignore'
     ).decode('ASCII')
 
+
+# ==================================================
+# BUSCA O HORÓSCOPO NO SITE
+# ==================================================
 
 def horoscopo(signo_desejado):
     import urllib.request
@@ -88,34 +104,39 @@ def horoscopo(signo_desejado):
     # Deixa o nome do signo sem acentos e em letras minúsculas
     signo_formatado = remover_acentos(signo_desejado).lower()
 
-    # Monta o endereço da página do horóscopo
-    minha_url = (
-        'https://www.horoscopovirtual.com.br/horoscopo/'
-        + signo_formatado
-    )
+    # Monta o endereço da página do signo
+    minha_url = 'https://www.horoscopovirtual.com.br/horoscopo/' + signo_formatado
 
-    # Faz a requisição para acessar o site
+    # Cria a requisição para acessar o site
     requisicao = urllib.request.Request(
         url=minha_url,
         headers={'User-Agent': 'Mozilla/5.0'}
     )
 
+    # Envia a requisição e recebe a resposta
     resposta = urllib.request.urlopen(requisicao)
 
-    # Lê o HTML que o site devolveu
+    # Lê o conteúdo da página como texto
     pagina = resposta.read().decode('utf-8')
 
-    # Procura o trecho onde começa o texto do horóscopo
+    # Define os trechos usados para localizar o horóscopo
     marcador_inicio = '<p class="text-pred">'
     marcador_final = '</p>'
 
+    # Encontra onde começa o texto desejado
     inicio = pagina.find(marcador_inicio) + len(marcador_inicio)
+
+    # Encontra onde termina o parágrafo
     final = pagina.find(marcador_final, inicio)
 
-    # Pega somente o texto entre os dois marcadores
+    # Retorna o signo junto com o texto encontrado
     return signo_desejado + ': ' + pagina[inicio:final]
 
 
-# Executa o programa principal quando este arquivo é iniciado
+# ==================================================
+# EXECUÇÃO DO PROGRAMA
+# ==================================================
+
+# Executa main() quando este arquivo é iniciado diretamente
 if __name__ == '__main__':
     main()
