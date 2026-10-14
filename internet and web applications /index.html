@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebPráticas | Internet e Aplicações Web</title>
+
+    <style>
+        /* =========================
+           1. CONFIGURAÇÕES GERAIS
+        ========================== */
+
+        :root {
+            --fundo: #071225;
+            --fundo-card: #101e37;
+            --azul: #3b82f6;
+            --ciano: #22d3ee;
+            --roxo: #a855f7;
+            --texto: #f1f5f9;
+            --texto-secundario: #b6c4da;
+            --borda: rgba(148, 163, 184, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--ciano);
+            outline-offset: 4px;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin-inline: auto;
+        }
+
+
+        /* =========================
+           2. CABEÇALHO E NAVEGAÇÃO
+        ========================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 18, 37, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--ciano);
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu a {
+            color: var(--texto-secundario);
+            padding: 9px 15px;
+            border-radius: 30px;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        .menu a:hover,
+        .menu a.ativo {
+            background: rgba(59, 130, 246, 0.2);
+            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            color: white;
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           3. SEÇÃO PRINCIPAL
+        ========================== */
+
+        .hero {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 100px 0 110px;
+            background:
+                radial-gradient(
+                    ellipse at 85% 20%,
+                    rgba(37, 99, 235, 0.28),
+                    transparent 42%
+                ),
+                radial-gradient(
+                    ellipse at 10% 90%,
+                    rgba(124, 58, 237, 0.17),
+                    transparent 40%
+                );
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 340px;
+            height: 340px;
+            border: 1px solid rgba(34, 211, 238, 0.18);
+            border-radius: 50%;
+            right: -100px;
+            top: 10px;
+            animation: flutuar 8s ease-in-out infinite;
+        }
+
+        .hero-conteudo {
+            max-width: 760px;
+            animation: aparecer 0.9s ease both;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            border: 1px solid rgba(34, 211, 238, 0.4);
+            background: rgba(34, 211, 238, 0.08);
+            color: var(--ciano);
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.6rem);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .destaque {
+            background: linear-gradient(90deg, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            color: var(--texto-secundario);
+            max-width: 640px;
+            font-size: 1.08rem;
+            margin-bottom: 32px;
+        }
+
+        .botao {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(110deg, #2563eb, #0891b2);
+            color: white;
+            padding: 13px 23px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .botao:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+
+        /* =========================
+           4. TÍTULOS DAS SEÇÕES
+        ========================== */
+
+        .secao {
+            padding: 75px 0;
+        }
+
+        .cabecalho-secao {
+            margin-bottom: 32px;
+        }
+
+        .cabecalho-secao h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .cabecalho-secao p {
+            color: var(--texto-secundario);
+        }
+
+        .linha-decorativa {
+            width: 65px;
+            height: 4px;
+            border-radius: 5px;
+            margin-top: 15px;
+            background: linear-gradient(90deg, var(--azul), var(--ciano));
+        }
+
+
+        /* =========================
+           5. CARDS DOS EXERCÍCIOS
+        ========================== */
+
+        .grade {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            --cor-card: #60a5fa;
+
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+            padding: 24px;
+            overflow: hidden;
+
+            background: linear-gradient(
+                145deg,
+                rgba(16, 30, 55, 0.98),
+                rgba(10, 22, 42, 0.98)
+            );
+
+            border: 1px solid var(--borda);
+            border-top: 2px solid var(--cor-card);
+            border-radius: 15px;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            right: -70px;
+            top: -70px;
+            border-radius: 50%;
+            background: var(--cor-card);
+            opacity: 0.07;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: var(--cor-card);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover::after {
+            transform: scale(2);
+        }
+
+        .card:nth-child(4n + 1) {
+            --cor-card: #c084fc;
+        }
+
+        .card:nth-child(4n + 2) {
+            --cor-card: #38bdf8;
+        }
+
+        .card:nth-child(4n + 3) {
+            --cor-card: #34d399;
+        }
+
+        .card:nth-child(4n) {
+            --cor-card: #fbbf24;
+        }
+
+        .numero {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            background: color-mix(in srgb, var(--cor-card) 17%, transparent);
+            color: var(--cor-card);
+            font-size: 1.05rem;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 1.12rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            flex-grow: 1;
+            color: var(--texto-secundario);
+            font-size: 0.91rem;
+            margin-bottom: 24px;
+        }
+
+        .link-card {
+            position: relative;
+            z-index: 1;
+            color: var(--cor-card);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .link-card span {
+            display: inline-block;
+            margin-left: 4px;
+            transition: transform 0.25s;
+        }
+
+        .link-card:hover span {
+            transform: translateX(5px);
+        }
+
+
+        /* =========================
+           6. PAINÉIS INFORMATIVOS
+        ========================== */
+
+        .painel {
+            padding: clamp(25px, 5vw, 45px);
+            margin-top: 35px;
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+            background:
+                radial-gradient(
+                    ellipse at 100% 0%,
+                    rgba(124, 58, 237, 0.2),
+                    transparent 45%
+                ),
+                var(--fundo-card);
+        }
+
+        .painel h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .painel p {
+            color: var(--texto-secundario);
+            max-width: 750px;
+        }
+
+        .painel .botao {
+            margin-top: 22px;
+        }
+
+        .painel-sobre {
+            background:
+                radial-gradient(
+                    ellipse at 100% 100%,
+                    rgba(13, 148, 136, 0.16),
+                    transparent 45%
+                ),
+                var(--fundo-card);
+        }
+
+
+        /* =========================
+           7. RODAPÉ
+        ========================== */
+
+        footer {
+            border-top: 1px solid var(--borda);
+            margin-top:10px;
+            padding: 28px 0;
+            text-align: center;
+            color: var(--texto-secundario);
+            font-size: 0.85rem;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        .voltar-topo {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 900;
+
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--borda);
+            border-radius: 50%;
+            background: #172b4d;
+            color: white;
+            font-size: 1.3rem;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: 0.25s;
+        }
+
+        .voltar-topo.visivel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           8. ANIMAÇÕES DE ENTRADA
+        ========================== */
+
+        .revelar {
+            opacity: 0;
+            transform: translateY(24px);
+            transition:
+                opacity 0.65s ease,
+                transform 0.65s ease;
+        }
+
+        .revelar.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flutuar {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(25px) rotate(8deg);
+            }
+        }
+
+
+        /* =========================
+           9. RESPONSIVIDADE
+        ========================== */
+
+        /* Tablets e notebooks menores */
+        @media (max-width: 1000px) {
+            .grade {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+        }
+
+        /* Celulares */
+        @media (max-width: 650px) {
+            .navbar {
+                min-height: 68px;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 0;
+                right: 0;
+
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+
+                padding: 15px 5% 20px;
+                background: #0b1830;
+                border-bottom: 1px solid var(--borda);
+
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-8px);
+                transition: 0.25s;
+            }
+
+            .menu.aberto {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .menu a {
+                padding: 12px;
+            }
+
+            .hero {
+                padding: 65px 0 75px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .secao {
+                padding: 55px 0;
+            }
+
+            .grade {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .painel {
+                margin-top: 22px;
+            }
+        }
+
+        /* Respeita quem prefere menos animação */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .revelar {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="container navbar">
+
+            <a href="#inicio" class="logo">
+                &lt;/&gt; Web<span>Práticas.</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="menu"
+            >
+                ☰
+            </button>
+
+            <nav class="menu" id="menu">
+                <a href="#inicio" class="ativo">Início</a>
+                <a href="#exercicios">Exercícios</a>
+                <a href="#praticas">Práticas</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- APRESENTAÇÃO -->
+    <section class="hero" id="inicio">
+        <div class="container hero-conteudo">
+
+            <span class="etiqueta">
+                ATIVIDADE ACADÊMICA · 2026.2
+            </span>
+
+            <h1>
+                Internet e<br>
+                <span class="destaque">Aplicações Web</span>
+            </h1>
+
+            <p>
+                Um espaço para reunir os exercícios e as práticas desenvolvidos
+                durante a disciplina, explorando a estruturação de páginas HTML,
+                a navegação por links e a criação de formulários.
+            </p>
+
+            <a href="#exercicios" class="botao">
+                ↗ Explorar exercícios
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- EXERCÍCIOS -->
+    <main class="container">
+
+        <section class="secao" id="exercicios">
+
+            <div class="cabecalho-secao revelar">
+                <h2>Exercícios</h2>
+                <p>
+                    Selecione uma atividade para abrir sua respectiva página.
+                </p>
+                <div class="linha-decorativa"></div>
+            </div>
+
+            <div class="grade">
+
+                <article class="card revelar">
+                    <div class="numero">01</div>
+                    <h3>Dez coisas</h3>
+                    <p>
+                        Formatação de texto, títulos, listas ordenadas
+                        e alinhamento.
+                    </p>
+                    <a class="link-card" href="questao1/dezcoisas.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">02</div>
+                    <h3>Imagine</h3>
+                    <p>
+                        Cores, títulos, parágrafos e separadores
+                        em uma página musical.
+                    </p>
+                    <a class="link-card" href="questao2/imagine.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">03</div>
+                    <h3>Bovespa</h3>
+                    <p>
+                        Organização de informações usando
+                        cabeçalhos, listas e parágrafos.
+                    </p>
+                    <a class="link-card" href="questao3/bovespa.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">04</div>
+                    <h3>Navegação por âncoras</h3>
+                    <p>
+                        Menu vertical com links para diferentes
+                        seções de uma mesma página.
+                    </p>
+                    <a class="link-card" href="questao4/cursos.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">05</div>
+                    <h3>Formulário</h3>
+                    <p>
+                        Navegação entre páginas e cadastro com
+                        campos organizados.
+                    </p>
+                    <a class="link-card" href="questao5/index.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">06</div>
+                    <h3>Conheça o Piauí</h3>
+                    <p>
+                        Seções informativas, navegação interna
+                        e imagens.
+                    </p>
+                    <a class="link-card" href="questao6/piaui.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">07</div>
+                    <h3>Currículo</h3>
+                    <p>
+                        Apresentação de informações pessoais,
+                        formação e experiências profissionais.
+                    </p>
+                    <a class="link-card" href="questao7/curriculo.html">
+                        Abrir exercício <span>→</span>
+                    </a>
+                </article>
+
+                <article class="card revelar">
+                    <div class="numero">08</div>
+                    <h3>Página principal</h3>
+                    <p>
+                        Página central para acessar os exercícios
+                        deste trabalho.
+                    </p>
+                    <a class="link-card" href="#inicio"> Voltar ao início <span>↑</span> </a>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- PRÁTICAS -->
+        <section class="painel revelar" id="praticas">
+            <h2>Práticas das aulas</h2>
+
+            <p>
+                Espaço destinado aos exemplos e exercícios realizados
+                durante as aulas.
+            </p>
+
+            <a href="#praticas" class="botao">
+                Ver práticas ↗
+            </a>
+        </section>
+
+
+        <!-- SOBRE -->
+        <section class="painel painel-sobre revelar" id="sobre">
+            <h2>Sobre o projeto</h2>
+
+            <p>
+                Este site reúne atividades da disciplina
+                <strong>Internet e Aplicações Web</strong>, com exemplos
+                de estruturação HTML, formatação, navegação e formulários.
+                O projeto também aplica conceitos de design responsivo
+                e acessibilidade.
+            </p>
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p><strong>Internet e Aplicações Web</strong> · 2026.2</p>
+            <p>Projeto acadêmico desenvolvido para fins educacionais.</p>
+        </div>
+    </footer>
+
+
+    <!-- BOTÃO VOLTAR AO TOPO -->
+    <a
+        href="#inicio"
+        class="voltar-topo"
+        id="voltar-topo"
+        aria-label="Voltar ao topo"
+    >
+        ↑
+    </a>
+
+
+    <script>
+        // =========================
+        // 1. MENU PARA CELULARES
+        // =========================
+
+        const botaoMenu = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        botaoMenu.addEventListener("click", () => {
+            const aberto = menu.classList.toggle("aberto");
+
+            botaoMenu.setAttribute("aria-expanded", aberto);
+            botaoMenu.setAttribute(
+                "aria-label",
+                aberto ? "Fechar menu" : "Abrir menu"
+            );
+
+            botaoMenu.textContent = aberto ? "✕" : "☰";
+        });
+
+        // Fecha o menu após clicar em uma opção
+        menu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                menu.classList.remove("aberto");
+                botaoMenu.setAttribute("aria-expanded", "false");
+                botaoMenu.setAttribute("aria-label", "Abrir menu");
+                botaoMenu.textContent = "☰";
+            });
+        });
+
+
+        // =========================
+        // 2. ANIMAÇÃO AO ROLAR A PÁGINA
+        // =========================
+
+        const elementos = document.querySelectorAll(".revelar");
+
+        if ("IntersectionObserver" in window) {
+
+            const observador = new IntersectionObserver((entradas, obs) => {
+
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add("visivel");
+                        obs.unobserve(entrada.target);
+                    }
+                });
+
+            }, {
+                threshold: 0.12
+            });
+
+            elementos.forEach(elemento => {
+                observador.observe(elemento);
+            });
+
+        } else {
+            // Alternativa para navegadores antigos
+            elementos.forEach(elemento => {
+                elemento.classList.add("visivel");
+            });
+        }
+
+
+        // =========================
+        // 3. BOTÃO VOLTAR AO TOPO
+        // =========================
+
+        const voltarTopo = document.getElementById("voltar-topo");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 350) {
+                voltarTopo.classList.add("visivel");
+            } else {
+                voltarTopo.classList.remove("visivel");
+            }
+        }, { passive: true });
+
+
+        // =========================
+        // 4. DESTAQUE DO MENU ATIVO
+        // =========================
+
+        const secoes = document.querySelectorAll(
+            "#inicio, #exercicios, #praticas, #sobre"
+        );
+
+        const linksMenu = menu.querySelectorAll("a");
+
+        if ("IntersectionObserver" in window) {
+
+            const observadorMenu = new IntersectionObserver(entradas => {
+
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+
+                        linksMenu.forEach(link => {
+                            link.classList.toggle(
+                                "ativo",
+                                link.getAttribute("href") ===
+                                "#" + entrada.target.id
+                            );
+                        });
+
+                    }
+                });
+
+            }, {
+                rootMargin: "-25% 0px -60% 0px"
+            });
+
+            secoes.forEach(secao => {
+                observadorMenu.observe(secao);
+            });
+        }
+    </script>
+
+</body>
+</html>
